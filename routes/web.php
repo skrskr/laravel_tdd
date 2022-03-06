@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,5 @@ Route::get('/', function () {
 Route::post('/books', [BookController::class, 'store']);
 Route::patch('/books/{book}-{slug}', [BookController::class, 'update']);
 Route::delete('/books/{book}-{slug}', [BookController::class, 'destroy']);
+
+Route::post('/authors', [AuthorController::class, 'store']);
