@@ -10,4 +10,9 @@ class Book extends Model
     use HasFactory;
 
     public $guarded = [];
+
+    public function path()
+    {
+        return "/books/" . $this->id . "-" . \Str::slug($this->title);
+    }
 }

@@ -9,21 +9,27 @@ class BookController extends Controller
 {
     public function store(Request $request)
     {
-
-        $data = $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-        ]);
-        Book::create($data);
+        $book = Book::create($this->validateRequest($request));
+        return redirect($book->path());
     }
 
     public function update(Request $request, Book $book)
     {
-        $data = $request->validate([
+        $book->update($this->validateRequest($request));
+        return redirect($book->path());
+    }
+
+    public function destroy(Book $book)
+    {
+        $book->delete();
+        return redirect("/books");
+    }
+
+    protected function validateRequest($request)
+    {
+        return $request->validate([
             'title' => 'required',
             'author' => 'required',
         ]);
-
-        $book->update($data);
     }
 }
