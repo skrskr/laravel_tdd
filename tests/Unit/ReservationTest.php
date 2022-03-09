@@ -13,7 +13,6 @@ class ReservationTest extends TestCase
 {
     use RefreshDatabase;
 
-
     public function test_a_book_can_be_checked_out()
     {
         $book = Book::factory()->create();
@@ -67,9 +66,4 @@ class ReservationTest extends TestCase
 
         $book->checkin($user);
     }
-
-
-
-
-
 }
